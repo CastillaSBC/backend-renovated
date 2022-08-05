@@ -14,7 +14,6 @@ const fs_jetpack_1 = require("fs-jetpack");
 const logger_1 = require("./logger");
 const http_1 = require("http");
 const path_1 = require("path");
-const cli_table_1 = __importDefault(require("cli-table"));
 const logger = logger_1.Logger.getInstance();
 class App {
     express;
@@ -40,17 +39,15 @@ class App {
         for (const file of files) {
             const fileName = file.split('\\')[2];
             const route = require(`../../${file}`).default;
-            const routeName = fileName.charAt(0).toUpperCase() + fileName.slice(1);
+            const routeName = fileName.charAt(0).toUpperCase() + fileName.slice(1).split(".")[0].toLowerCase();
+            console.log(`Loaded service ${routeName}`);
             this.express.use(`/${routeName}`, route);
         }
-        let table = new cli_table_1.default();
-        //@ts-ignore
+        //@ts-expect-error
         let routes = (0, express_list_endpoints_1.default)(this.express);
         routes.forEach((route) => {
-            table.push([route.methods[0], route.path.split('/')[1].split('\\')[0]]);
+            console.log(`${route.methods[0].toUpperCase()} ${route.path}`);
         });
-        table.push(routes);
-        console.log(table.toString());
     }
     init() {
         if (!process.env.APP_PORT) {

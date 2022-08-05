@@ -7,7 +7,7 @@ export class Logger {
         this._logger = winston.createLogger({
             level: 'info',
             format: winston.format.json(),
-            defaultMeta: { service: 'castilla-service' },
+            defaultMeta: { service: 'anomic-service' },
             transports: [
                 new winston.transports.File({ filename: 'error.log', level: 'error' }),
                 new winston.transports.File({ filename: 'combined.log' })

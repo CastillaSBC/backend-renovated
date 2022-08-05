@@ -8,7 +8,6 @@ import { find } from "fs-jetpack";
 import { Logger } from "./logger"
 import { Server } from "http"
 import { join } from "path";
-import { cwd } from "process";
 import Table from "cli-table";
 const logger = Logger.getInstance()
 
@@ -36,18 +35,16 @@ class App {
         for (const file of files) {
             const fileName = file.split('\\')[2]
             const route = require(`../../${file}`).default
-            const routeName = fileName.charAt(0).toUpperCase() + fileName.slice(1)
+            const routeName = fileName.charAt(0).toUpperCase() + fileName.slice(1).split(".")[0].toLowerCase()
+            console.log(`Loaded service ${routeName}`)
+
             this.express.use(`/${routeName}`, route)
         }
-        let table = new Table();
-
-        //@ts-ignore
+        //@ts-expect-error
         let routes = routing(this.express)
         routes.forEach((route) => {
-            table.push([route.methods[0], route.path.split('/')[1].split('\\')[0]]);
+            console.log(`${route.methods[0].toUpperCase()} ${route.path}`)
         })
-        table.push(routes)
-        console.log(table.toString())
     }
 
     init() {
