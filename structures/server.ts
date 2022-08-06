@@ -8,7 +8,6 @@ import { find } from "fs-jetpack";
 import { Logger } from "./logger"
 import { Server } from "http"
 import { join } from "path";
-import Table from "cli-table";
 const logger = Logger.getInstance()
 
 class App {
@@ -33,17 +32,19 @@ class App {
     async routes() {
         const files = await find(this.routesFolder, { matching: ['*.ts', '*.js'] })
         for (const file of files) {
-            const fileName = file.split('\\')[2]
-            const route = require(`../../${file}`).default
-            const routeName = fileName.charAt(0).toUpperCase() + fileName.slice(1).split(".")[0].toLowerCase()
-            console.log(`Loaded service ${routeName}`)
-
+            const fileName = file.split(".") // ['routes/index', 'ts'] -> index.tse
+            const fileNameLast = fileName[fileName.length - 1]
+            const fileNameFirst = fileName[0].split("/")
+            const fileNameFirstLast = fileNameFirst[fileNameFirst.length - 1]
+            const fileNameFormatted = `${fileNameFirstLast}.${fileNameLast}`
+            const route = require(join(__dirname, '..', 'routes', fileNameFormatted)).default
+            const routeName = fileNameFormatted.charAt(0).toUpperCase() + fileNameFormatted.slice(1).split(".")[0].toLowerCase()
             this.express.use(`/${routeName}`, route)
         }
         //@ts-expect-error
         let routes = routing(this.express)
         routes.forEach((route) => {
-            console.log(`${route.methods[0].toUpperCase()} ${route.path}`)
+            console.log(`${route.methods[0].toUpperCase()} ${route.path.toLowerCase()}`)
         })
     }
 
