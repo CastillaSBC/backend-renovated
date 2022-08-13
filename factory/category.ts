@@ -1,5 +1,5 @@
-import Logger from "./../structures/console";
-import { prisma } from "./../prisma/prisma";
+import Logger from "../structures/console";
+import { prisma } from "../prisma/prisma";
 
 function addCategory(name: string, description: string) {
     categories.push({
