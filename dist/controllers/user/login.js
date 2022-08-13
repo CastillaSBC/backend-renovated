@@ -70,20 +70,33 @@ async function login(req, res) {
             DailyStreak: true
         }
     });
-    const lastDate = reFetchedUser.DailyStreak.latestDate;
-    console_1.default.success(`Last date: ${lastDate}`);
-    const currentDate = new Date();
-    console_1.default.success(`Current date: ${currentDate}`);
-    const diff = currentDate.getTime() - lastDate.getTime();
-    console_1.default.log(`Difference: ${diff}`);
-    if (diff < 2) {
-        console_1.default.warning(`${user.username} with id ${user.id} is getting a new daily streak because their last daily streak was ${Math.floor(diff / (1000 * 60 * 60 * 24))} days ago`);
+    const lastDate = Date.now() - reFetchedUser.DailyStreak.latestDate;
+    const lastDateInSeconds = lastDate / 1000;
+    console_1.default.warning(`Last date: ${lastDateInSeconds} seconds, streak: ${reFetchedUser.DailyStreak.streak}`);
+    // Checks if the user has been gone for more than 48 hours to remove their streak.
+    if (lastDateInSeconds >= 172800) {
+        console_1.default.warning('More than 72 hours have passed');
+        await prisma_1.prisma.dailyStreak.update({
+            where: {
+                id: reFetchedUser.DailyStreak.id
+            },
+            data: {
+                latestDate: Date.now(),
+                failedTimes: reFetchedUser.DailyStreak.failedTimes + 1,
+                streak: 0
+            }
+        });
+        console_1.default.success(`${reFetchedUser.username}'s daily streak has been reset due to more than 48 hours have passed`);
+    }
+    if (lastDateInSeconds >= 86400) {
+        console_1.default.warning(`${user.username} with id ${user.id} is getting a new daily streak because their last daily streak was ${Math.floor(lastDate / (1000 * 60 * 60 * 24))} days ago`);
         await prisma_1.prisma.dailyStreak.update({
             where: {
                 userId: reFetchedUser.id
             },
             data: {
-                streak: reFetchedUser.DailyStreak.streak + 1
+                streak: reFetchedUser.DailyStreak.streak + 1,
+                latestDate: Date.now(),
             }
         });
     }

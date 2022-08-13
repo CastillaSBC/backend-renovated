@@ -59,9 +59,10 @@ model Threads {
 }
 
 model Category {
-  id      String    @id @default(cuid())
-  name    String
-  threads Threads[]
+  id          String    @id @default(cuid())
+  name        String    @default("Uncategorized")
+  description String    @default("N/A")
+  threads     Threads[]
 }
 
 model ThreadReactions {

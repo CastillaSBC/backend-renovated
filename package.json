@@ -7,7 +7,8 @@
     "build": "npx tsc",
     "start": "node ./dist/main.js",
     "dev": "npx tsc && node ./dist/main.js",
-    "test": "npx jest"
+    "test": "npx jest",
+    "factory:category": "npx tsc && node ./dist/factory/category.js"
   },
   "keywords": [],
   "author": "",
