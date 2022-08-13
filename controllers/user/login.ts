@@ -50,6 +50,7 @@ export default async function login(req: Request, res: Response) {
     })
 
 
+<<<<<<< HEAD
     const lastDate = Date.now() - reFetchedUser!.DailyStreak!.latestDate
 
     const lastDateInSeconds = lastDate / 1000
@@ -73,6 +74,13 @@ export default async function login(req: Request, res: Response) {
 
     if (lastDateInSeconds >= 86400) {
         Logger.warning(`${user.username} with id ${user.id} is getting a new daily streak because their last daily streak was ${Math.floor(lastDate / (1000 * 60 * 60 * 24))} days ago`)
+=======
+    const lastDate = reFetchedUser!.DailyStreak!.latestDate
+    const now = Date.now()
+    const diff = now - lastDate
+    if (diff < 2) {
+        Logger.warning(`${user.username} with id ${user.id} is getting a new daily streak because their last daily streak was ${Math.floor(diff / (1000 * 60 * 60 * 24))} days ago`)
+>>>>>>> e9ea6453d918504107c676cfc361363aa19d9cb1
         await prisma.dailyStreak.update({
             where: {
                 userId: reFetchedUser!.id

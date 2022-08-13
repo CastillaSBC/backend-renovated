@@ -46,7 +46,10 @@
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
+<<<<<<< HEAD
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
 {"level":"info","message":"Server started on port 3000","service":"anomic-service"}
+=======
+>>>>>>> e9ea6453d918504107c676cfc361363aa19d9cb1
