@@ -8,7 +8,6 @@ import { Server } from "http";
 import { join } from "path";
 import { Logger } from "./logger";
 const logger = Logger.getInstance()
-const isWindows = process.platform === "win32";
 
 class App {
   public express: express.Application;

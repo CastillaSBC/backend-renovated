@@ -4,7 +4,7 @@ import { config } from "dotenv";
 config()
 
 export default async function verifyCaptcha(req: Request, res: Response, next: Function) {
-    const captcha : string = req.body.captcha;
+    const captcha : string = req.body['h-captcha'];
     const secret = process.env.HCAPTCHA_SECRET!;
 
     const captchaResult = await verify(secret, captcha)
