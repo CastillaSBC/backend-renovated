@@ -16,6 +16,25 @@ export default async function replyThread(req: Request, res: Response) {
             message: "content must be between 3 and 2000 characters!"
         })
     }
+
+    const thread = await prisma.threads.findUnique({
+        where: {
+            id: threadId,
+        },
+    });
+    if (!thread) {
+        return res.status(404).send({
+            message: "Thread not found"
+        })
+    }
+
+    if(thread.moderated) {
+        return res.status(400).send({
+            message: "Thread is moderated"
+        })
+    }
+    
+
     const reply = await prisma.responses.create({
         data: {
             content,
