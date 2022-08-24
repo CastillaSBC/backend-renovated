@@ -31,7 +31,6 @@ async function insertCategories(categoryList: Category[]) {
         await prisma.category.create({
             data: {
                 name: category.name,
-                // @ts-ignore
                 description: category.description
             }
         })
