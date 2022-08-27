@@ -9,8 +9,8 @@ import test from "../controllers/test";
 const user = Router();
 
 user.get('/me', async (req, res) => await authenticate(req, res));
-user.post('/login', verifyCaptcha, async (req, res) => await login(req, res));
-user.post('/register', verifyCaptcha, async (req, res) => await register(req, res));
+user.post('/login', async (req, res) => await login(req, res));
+user.post('/register', async (req, res) => await register(req, res));
 user.post('/logout', async (req, res) => await logout(req, res));
-user.post("/test", verifyCaptcha, async (req, res) => await test(req, res));
+user.post("/test", async (req, res) => await test(req, res));
 export default user

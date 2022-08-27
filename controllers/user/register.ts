@@ -39,7 +39,7 @@ export default async function register(req: Request, response: Response) {
     });
 
     return response.status(200).send({
-        message: "User registered, please login."
+        message: "You have been registered! Please continue by logging in! 🎉"
     });
 
 }
