@@ -29,13 +29,27 @@ class App {
     this.express.use(cookieParser());
   }
   async routes() {
+    
     find(this.routesFolder, { matching: "*.js" }).forEach((routeFile) => {
-      const fileName = routeFile.split("\\").pop();
-      const routeName = fileName?.split(".")[0];
-
-      const route = require(join(this.routesFolder, fileName!));
+      console.log(`routeFile is ${routeFile}`) 
+      let fileName: string | undefined = undefined;
+      let routeName: string | undefined = undefined;
+      // check if the platform is windows
+      if (process.platform === "win32") {
+        // if it is windows, remove the first character of the path
+        const route = require(join(this.routesFolder, fileName!));
       
-      this.express.use(`/${routeName}`, route.default);
+        this.express.use(`/${routeName}`, route.default);
+      } else {
+        fileName = routeFile.split("/").pop()?.split(".")[0];
+        console.log(`fileName is ${fileName}`)
+        const route = require(join(this.routesFolder, fileName!));
+        console.log(`Route will be /${fileName}`)
+        this.express.use(`/${fileName}`, route.default);
+      }
+      
+
+
     });
   }
 
