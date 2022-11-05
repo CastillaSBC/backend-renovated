@@ -37,7 +37,7 @@ export default async function authorize(req: Request, res: Response, next: Funct
                 message: "Invalid token"
             });
         }
-
+        // Expect error as req.user is not within the Express types.
         //@ts-expect-error
         req.user = user;
         next()

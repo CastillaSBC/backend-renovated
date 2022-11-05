@@ -4,7 +4,7 @@ import login from "../controllers/user/login";
 import register from "../controllers/user/register";
 import logout from "../controllers/user/logout";
 import verifyCaptcha from "../middleware/captcha";
-import test from "../controllers/test";
+import test from "../controllers/example_controller";
 
 const user = Router();
 

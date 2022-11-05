@@ -16,7 +16,7 @@ type Category = {
     name: string,
     description: string
 }
-
+// TODO: make this less aids.
 addCategory("Announcements", "Announcements by Anomia Staff")
 addCategory("General", "General Discussion")
 addCategory("Leaks & Breaches", "Leaks, Data, and PoCs")
