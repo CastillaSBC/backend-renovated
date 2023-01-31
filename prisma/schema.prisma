@@ -10,15 +10,7 @@ datasource db {
   url      = "file:./db.sqlite3"
 }
 
-model DailyStreak {
-  id            Int    @id @default(autoincrement())
-  latestDate    Int    @default(0)
-  streak        Int    @default(0)
-  failedTimes   Int
-  longestStreak Int    @default(0)
-  userId        String @unique
-  user          User   @relation(fields: [userId], references: [id])
-}
+
 
 model User {
   id               String            @id @unique @default(cuid())
@@ -38,7 +30,6 @@ model User {
   updatedAt        DateTime          @default(now())
   role             String            @default("user")
   ThreadReactions  ThreadReactions[]
-  DailyStreak      DailyStreak?
 }
 
 model Threads {

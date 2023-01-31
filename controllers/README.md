@@ -6,7 +6,7 @@ The structure of the controllers is seen as such:
 
 ```ts
 export default async function controller_name(req: Request, res: Response) {
- // Controller Logic here
+	// Controller Logic here
 }
 ```
 

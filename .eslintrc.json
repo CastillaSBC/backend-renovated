@@ -1,0 +1,7 @@
+{
+	"root": true,
+	"env": {
+		"node": true
+	},
+	"extends": ["plugin:adonis/typescriptApp", "plugin:prettier/recommended"]
+}
