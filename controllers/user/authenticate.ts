@@ -39,8 +39,13 @@ export default async function authenticate(req: Request, res: Response) {
 		}
 
 		return res.status(200).json({
-			message: 'Authenticated',
-			user
+			user: {
+				id: user.id,
+				username: user.username,
+				verified: user.verifiedEmail,
+				isAdmin: user.role != 'user',
+				isBanned: user.moderated
+			}
 		});
 	} catch (err) {
 		return res.status(500).json({

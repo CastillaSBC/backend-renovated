@@ -1,13 +1,20 @@
 import cors from 'cors';
 import helmet from 'helmet';
-import express, {IRoute} from 'express';
+import express, { IRoute } from 'express';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
-import {find} from 'fs-jetpack';
-import {Server} from 'http';
-import {join} from 'path';
-import {Logger} from './logger';
+import { find } from 'fs-jetpack';
+import { Server } from 'http';
+import { join } from 'path';
+import { Logger } from './logger';
+import rateLimit from "express-rate-limit";
 const logger = Logger.getInstance();
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
 
 class App {
 	public express: express.Application;
@@ -22,14 +29,15 @@ class App {
 	}
 	middleware() {
 		this.express.use(express.json());
-		this.express.use(express.urlencoded({extended: false}));
+		this.express.use(express.urlencoded({ extended: false }));
 		this.express.use(compression());
 		this.express.use(helmet());
-		this.express.use(cors({credentials: true, origin: true}));
+		this.express.use(cors({ credentials: true, origin: true }));
 		this.express.use(cookieParser());
+		this.express.use(limiter)
 	}
 	async routes() {
-		find(this.routesFolder, {matching: '*.js'}).forEach((routeFile) => {
+		find(this.routesFolder, { matching: '*.js' }).forEach((routeFile) => {
 			console.log(`routeFile is ${routeFile}`);
 			let fileName: string | undefined = undefined;
 			let routeName: string | undefined = undefined;
@@ -61,4 +69,4 @@ class App {
 
 const server = new App();
 
-export {server};
+export { server };
