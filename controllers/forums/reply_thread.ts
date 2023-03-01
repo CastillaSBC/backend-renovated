@@ -6,13 +6,13 @@ export default async function replyThread(req: Request, res: Response) {
 	const threadId: string = req.body.threadId;
 
 	if (!content || !threadId) {
-		return res.status(400).send({
+		return res.status(400).json({
 			message: 'content and thread ID are required!'
 		});
 	}
 
 	if (content.length < 3 || content.length > 2000) {
-		return res.status(400).send({
+		return res.status(400).json({
 			message: 'content must be between 3 and 2000 characters!'
 		});
 	}
@@ -23,15 +23,21 @@ export default async function replyThread(req: Request, res: Response) {
 		}
 	});
 	if (!thread) {
-		return res.status(404).send({
+		return res.status(404).json({
 			message: 'Thread not found'
 		});
 	}
 
 	if (thread.moderated) {
-		return res.status(400).send({
+		return res.status(400).json({
 			message: 'Thread is moderated'
 		});
+	}
+
+	if(thread.locked){
+		return res.status(400).json({
+			message: "Thread is locked."
+		})
 	}
 
 	const reply = await prisma.responses.create({
@@ -43,7 +49,7 @@ export default async function replyThread(req: Request, res: Response) {
 		}
 	});
 
-	return res.status(200).send({
+	return res.status(200).json({
 		message: 'Reply created successfully!',
 		reply: reply
 	});

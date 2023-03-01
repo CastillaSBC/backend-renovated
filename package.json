@@ -8,6 +8,7 @@
 		"start": "node ./dist/main.js",
 		"dev": "npx tsc && node ./dist/main.js",
 		"test": "npx jest",
+		"factory:admin": "npx tsc && node ./dist/factory/admin.js",
 		"factory:category": "npx tsc && node ./dist/factory/category.js",
 		"lint": "eslint . --ext=.ts",
 		"format": "prettier --write ."
@@ -16,7 +17,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"@prisma/client": "^4.9.0",
+		"@prisma/client": "^4.10.1",
 		"@types/cli-table": "^0.3.0",
 		"@types/express-list-endpoints": "^6.0.0",
 		"@types/socket.io": "^3.0.2",
@@ -30,6 +31,7 @@
 		"express": "^4.17.3",
 		"express-list-endpoints": "^6.0.0",
 		"express-rate-limit": "^6.7.0",
+		"express-recaptcha": "^5.1.0",
 		"fs-jetpack": "^4.3.1",
 		"hcaptcha": "^0.1.1",
 		"helmet": "^5.0.2",
@@ -52,7 +54,7 @@
 		"babel-cli": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
 		"jest": "^27.5.1",
-		"prisma": "^4.9.0",
+		"prisma": "^4.10.1",
 		"superagent": "^7.1.1",
 		"supertest": "^6.2.2",
 		"ts-jest": "^27.1.4",

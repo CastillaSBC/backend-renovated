@@ -1,10 +1,11 @@
+import { prisma } from '../prisma/prisma';
 import Logger from '../structures/console';
-import {prisma} from '../prisma/prisma';
 
-function addCategory(name: string, description: string) {
+function addCategory(name: string, description: string, staffOnly: boolean) {
 	categories.push({
 		name,
-		description
+		description,
+		staffOnly
 	});
 }
 
@@ -15,14 +16,15 @@ const categories: Category[] = [];
 type Category = {
 	name: string;
 	description: string;
+	staffOnly: boolean;
 };
 // TODO: make this less aids.
-addCategory('Announcements', 'Announcements by Anomia Staff');
-addCategory('General', 'General Discussion');
-addCategory('Leaks & Breaches', 'Leaks, Data, and PoCs');
-addCategory('Suggestions', 'Suggestions for the site');
-addCategory('Questions', 'Ask and answer questions related to the SBC');
-addCategory('Advertising', 'Advertise with us!');
+addCategory('Announcements', 'Announcements by Anomia Staff', true);
+addCategory('General', 'General Discussion', false);
+addCategory('WWN', 'Discuss the World War News', false);
+addCategory('Suggestions', 'Suggestions for the site', false);
+addCategory('Questions', 'Ask and answer questions related to the SBC', false);
+addCategory('Advertising', 'Advertise with us!', false);
 
 Logger.success('Categories added to array.');
 
@@ -31,7 +33,8 @@ async function insertCategories(categoryList: Category[]) {
 		await prisma.category.create({
 			data: {
 				name: category.name,
-				description: category.description
+				description: category.description,
+				staffOnly: category.staffOnly
 			}
 		});
 	}
