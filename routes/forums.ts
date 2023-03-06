@@ -1,5 +1,6 @@
 import {Router} from 'express';
 import authorize from '../middleware/authorize';
+import verifyCaptcha from '../middleware/captcha';
 
 import categories from '../controllers/forums/categories';
 import categoryView from '../controllers/forums/category_view';
@@ -12,7 +13,7 @@ const forums = Router();
 forums.get('/categories', async (req, res) => await categories(req, res));
 forums.get('/categories/:id', async (req, res) => await categoryView(req, res));
 forums.get('/thread/:id', async (req, res) => await viewThread(req, res));
-forums.post('/create', authorize, async (req, res) => await createThread(req, res));
-forums.post('/reply', authorize, async (req, res) => await replyThread(req, res));
+forums.post('/create', authorize, verifyCaptcha, async (req, res) => await createThread(req, res));
+forums.post('/reply', authorize, verifyCaptcha, async (req, res) => await replyThread(req, res));
 
 export default forums;
