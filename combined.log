@@ -62,3 +62,19 @@
 {"level":"info","message":"Authenthicated user Shigetora","service":"anomic-service"}
 {"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
 {"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Server started on port 3000","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER SexMaster69 AUTHENTHICATION] Searching in database for SexMaster69...","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER SexMaster69 AUTHENTHICATION] Searching in database for SexMaster69...","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER ShigeroToura AUTHENTHICATION] Searching in database for ShigeroToura...","service":"anomic-service"}
+{"level":"info","message":"[USER ShigeroToura AUTHENTHICATION] User found!","service":"anomic-service"}
+{"level":"info","message":"[USER ShigeroToura AUTHENTHICATION] Password for ShigeroToura validated.","service":"anomic-service"}
+{"level":"info","message":"[USER ShigeroToura AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...","service":"anomic-service"}
+{"level":"info","message":"COOKIES SENT, SENDING STATUS.","service":"anomic-service"}
+{"level":"info","message":"Authenthicated user ShigeroToura","service":"anomic-service"}

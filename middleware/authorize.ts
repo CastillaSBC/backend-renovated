@@ -4,11 +4,6 @@ import {decode} from 'jsonwebtoken';
 
 export default async function authorize(req: Request, res: Response, next: Function) {
 	const token = req.cookies.__ANOMICSECURITY;
-	if (!ip) {
-		res.status(400).json({
-			message: 'No ip address detected. Please try again.'
-		});
-	}
 
 	if (!token) {
 		return res.status(401).json({
