@@ -4,8 +4,6 @@ import {decode} from 'jsonwebtoken';
 
 export default async function authorize(req: Request, res: Response, next: Function) {
 	const token = req.cookies.__ANOMICSECURITY;
-	const ip = req.socket.remoteAddress;
-	console.log(`ip: ${ip} | token: ${token}`);
 	if (!ip) {
 		res.status(400).json({
 			message: 'No ip address detected. Please try again.'
@@ -20,12 +18,6 @@ export default async function authorize(req: Request, res: Response, next: Funct
 
 	try {
 		const decoded = decode(token, {complete: true}) as any;
-
-		if (decoded.payload.ip != ip) {
-			return res.status(401).json({
-				message: 'Mismatched IP detected. Please authenticate again'
-			});
-		}
 		const user = await prisma.user.findUnique({
 			where: {
 				id: decoded.payload.id

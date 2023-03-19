@@ -1,0 +1,64 @@
+{"level":"info","message":"Server started on port 3000","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Searching in database for Shigetora...","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] User found!","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Password for Shigetora validated.","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...","service":"anomic-service"}
+{"level":"info","message":"COOKIES SENT, SENDING STATUS.","service":"anomic-service"}
+{"level":"info","message":"Authenthicated user Shigetora","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Server started on port 3000","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Searching in database for Shigetora...","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] User found!","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Password for Shigetora validated.","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...","service":"anomic-service"}
+{"level":"info","message":"COOKIES SENT, SENDING STATUS.","service":"anomic-service"}
+{"level":"info","message":"Authenthicated user Shigetora","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Searching in database for Shigetora...","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] User found!","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Password for Shigetora validated.","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...","service":"anomic-service"}
+{"level":"info","message":"COOKIES SENT, SENDING STATUS.","service":"anomic-service"}
+{"level":"info","message":"Authenthicated user Shigetora","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"RECEIVED USERNAME AND PASSWORD","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Searching in database for Shigetora...","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] User found!","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] Password for Shigetora validated.","service":"anomic-service"}
+{"level":"info","message":"[USER Shigetora AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...","service":"anomic-service"}
+{"level":"info","message":"COOKIES SENT, SENDING STATUS.","service":"anomic-service"}
+{"level":"info","message":"Authenthicated user Shigetora","service":"anomic-service"}
+{"level":"error","message":"Invalid captcha detected.","service":"anomic-service"}
+{"level":"info","message":"Valid captcha detected.","service":"anomic-service"}
