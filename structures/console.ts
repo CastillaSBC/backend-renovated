@@ -1,14 +1,22 @@
+import { Logger } from "./logger";
+const logger = Logger.getInstance();
+
 export default class Console {
 	static log(message: string) {
-		console.log(`✨ INFO: ${message}`);
+		logger.log(message)
+		console.log(`✨[${new Date()}] INFO: ${message} ✨`);
 	}
 	static warning(message: string) {
-		console.warn(`🧨 WARNING: ${message}`);
+		logger.log(`warning: ${message}`)
+		console.warn(`🧨 [${new Date()}] WARNING: ${message} 🧨`);
 	}
 	static error(message: string) {
-		console.error(`❌ ERROR: ${message}`);
+		logger.error(message)
+
+		console.error(`❌ [${new Date()}] ERROR: ${message} ❌`);
 	}
 	static success(message: string) {
-		console.log(`✅ SUCCESS: ${message}`);
+		logger.log(message)
+		console.log(`✅ [${new Date()}] SUCCESS: ${message} ✅`);
 	}
 }

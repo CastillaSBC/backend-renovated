@@ -3,7 +3,7 @@ import {prisma} from './../prisma/prisma';
 import {decode} from 'jsonwebtoken';
 
 export default async function authorize(req: Request, res: Response, next: Function) {
-	const token = req.cookies.token;
+	const token = req.cookies.__ANOMICSECURITY;
 	const ip = req.socket.remoteAddress;
 	console.log(`ip: ${ip} | token: ${token}`);
 	if (!ip) {

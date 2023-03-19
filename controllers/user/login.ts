@@ -1,19 +1,21 @@
-import {Request, Response} from 'express';
-import {prisma} from './../../prisma/prisma';
-import {sign} from 'jsonwebtoken';
+import { Request, Response } from 'express';
+import { prisma } from './../../prisma/prisma';
+import { sign } from 'jsonwebtoken';
 import * as argon2 from 'argon2';
 import Logger from './../../structures/console';
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 config();
 
 export default async function login(req: Request, res: Response) {
-	let streak: number = 0;
-	const {username, password} = req.body;
+	Logger.log(`RECEIVED USERNAME AND PASSWORD`)
+
+	const { username, password } = req.body;
 	if (!username || !password) {
 		return res.status(400).json({
 			message: 'Please provide a username and password'
 		});
 	}
+	Logger.log(`[USER ${username} AUTHENTHICATION] Searching in database for ${username}...`)
 
 	const user = await prisma.user.findUnique({
 		where: {
@@ -26,6 +28,7 @@ export default async function login(req: Request, res: Response) {
 			message: 'User not found'
 		});
 	}
+	Logger.success(`[USER ${username} AUTHENTHICATION] User found!`)
 
 	const validPassword = await argon2.verify(user.password, password);
 
@@ -34,6 +37,7 @@ export default async function login(req: Request, res: Response) {
 			message: 'Invalid password'
 		});
 	}
+	Logger.success(`[USER ${username} AUTHENTHICATION] Password for ${username} validated.`)
 
 	const token = sign(
 		{
@@ -45,11 +49,13 @@ export default async function login(req: Request, res: Response) {
 			expiresIn: '2h'
 		}
 	);
+	Logger.log(`[USER ${username} AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...`)
 
-	res.cookie('token', token, {
+	res.cookie('__ANOMICSECURITY', token, {
 		httpOnly: true,
 		secure: true
 	});
+	Logger.log("COOKIES SENT, SENDING STATUS.")
 
 	Logger.success(`Authenthicated user ${user.username}`);
 
