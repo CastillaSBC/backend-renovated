@@ -49,9 +49,7 @@ class App {
 				this.express.use(`/${routeName}`, route.default);
 			} else {
 				fileName = routeFile.split('/').pop()?.split('.')[0];
-				console.log(`fileName is ${fileName}`);
 				const route = require(join(this.routesFolder, fileName!));
-				console.log(`Route will be /${fileName}`);
 				this.express.use(`/${fileName}`, route.default);
 			}
 		});
