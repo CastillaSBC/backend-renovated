@@ -50,10 +50,12 @@ export default async function login(req: Request, res: Response) {
 		}
 	);
 	Logger.log(`[USER ${username} AUTHENTHICATION] TOKEN GENERATED, SENDING COOKIES...`)
-
+	const date = new Date();
+	date.setMonth(date.getMonth() + 1)
 	res.cookie('__ANOMICSECURITY', token, {
 		httpOnly: true,
-		secure: true
+		secure: true,
+		expires: date
 	});
 	Logger.log("COOKIES SENT, SENDING STATUS.")
 
